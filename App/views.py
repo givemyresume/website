@@ -66,6 +66,7 @@ def login(request):
 
 def create_resume(request):
     if request.method=="POST":
+        print(request.POST)
         data = {
             "user":request.session["user"]["username"],
             "full_name":request.POST.get("name"),
@@ -137,32 +138,39 @@ def create_resume(request):
             },
             "references":request.POST.get("references"),
         }
+        api_response = requests.get(f'{API_URL}/resume/{data["user"]}').json()
+        message = "Resume Info Edited Successfully. Download Resume Now"
+        if api_response["status"] == "SUCCESS":
+            message = api_response["message"]
+        elif api_response["status"] == "FAILED":
+            message = api_response["message"]
         try:
-            requests.get(f'{API_URL}/resume/{data["user"]}')
             resume = client.query(q.get(q.match(q.index("resume_index"), data["user"])))
             quiz = client.query(q.update(q.ref(q.collection("Resume_Info"),resume["ref"].id()), {
                 "data": data
             }))
-            messages.add_message(request, messages.INFO, 'Resume Info Edited Successfully. Download Resume Now')
-            return redirect("App:create-resume")
+            messages.add_message(request, messages.INFO, message)
+            context={"resume_info":data}
+            return render(request,"create-resume.html",context)
         except:
             quiz = client.query(q.create(q.collection("Resume_Info"), {
                 "data": data
             }))
-            messages.add_message(request, messages.INFO, 'Resume Info Saved Successfully. Download Resume Now')
-            return redirect("App:resume")
+            messages.add_message(request, messages.INFO, message)
+            context={"resume_info":data}
+            return render(request,"create-resume.html",context)
     else:
         try:
-            resume_info = client.query(q.get(q.match(q.index("resume_index"), request.session["user"]["username"])))["data"]
-            context={"resume_info":resume_info}
+            data = client.query(q.get(q.match(q.index("resume_index"), request.session["user"]["username"])))["data"]
+            context={"resume_info":data}
             return render(request,"create-resume.html",context)
         except:
             return render(request,"create-resume.html")
 
 def resume(request):
     try:
-        resume_info = client.query(q.get(q.match(q.index("resume_index"), request.session["user"]["username"])))["data"]
-        context={"resume_info":resume_info}
+        data = client.query(q.get(q.match(q.index("resume_index"), request.session["user"]["username"])))["data"]
+        context={"resume_info":data}
         print(context)
         return render(request,"resume.html",context)
     except:
