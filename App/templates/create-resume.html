@@ -1,0 +1,398 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>
+    Fauna Resume Builder
+  </title>
+  <link href="{% static './style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div id="javascript_header">
+  </div>
+  <form method="POST">
+    {% csrf_token %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color:red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <div class="form__header">
+      <h1>
+        Build Your Resume
+      </h1>
+      <p>
+        Enter the fields below to generate a resume file.
+      </p>
+    </div>
+    <h2>
+      Personal Details
+    </h2>
+    <div class="form-group">
+      <label for="name">
+        Full Name
+        <span>
+          *
+        </span>
+      </label>
+      <input id="name" name="name" value="{{resume_info.full_name}}" type="text" />
+      <div class="error" id="name__error">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="summary">
+        Summary
+      </label>
+      <textarea id="summary" name="summary" placeholder="{{resume_info.summary}}"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="email">
+        Email
+        <span>
+          *
+        </span>
+      </label>
+      <input id="email" name="email" value="{{resume_info.email}}" type="email" />
+      <div class="error" id="email__error">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">
+        Phone
+      </label>
+      <input id="phone" name="phone" value="{{resume_info.phone}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="website">
+        Website
+      </label>
+      <input id="website" name="website" value="{{resume_info.website}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="address">
+        Address
+      </label>
+      <input id="address" name="address" value="{{resume_info.address}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="skills">
+        Skills
+      </label>
+      <textarea id="skills" name="skills" placeholder="{{resume_info.skills}}"></textarea>
+    </div>
+    <h2>
+      Education
+    </h2>
+    <h3>
+      Bachelor's
+    </h3>
+    <div class="form-group">
+      <label for="education-1__school">
+        College/University name
+      </label>
+      <input id="education-1__school" name="education-1__school" placeholder="{{resume_info.education.1.school}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="education-1__start">
+          Start Date
+        </label>
+        <input id="education-1__start" name="education-1__start" value="{{resume_info.education.1.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="education-1__end">
+          End Date
+        </label>
+        <input id="education-1__end" name="education-1__end" value="{{resume_info.education.1.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="education-1__details">
+        Details
+      </label>
+      <textarea id="education-1__details" name="education-1__details" placeholder="{{resume_info.education.1.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Higher Secondary Education
+    </h3>
+    <div class="form-group">
+      <label for="education-2__school">
+        High School name
+      </label>
+      <input id="education-2__school" name="education-2__school" placeholder="{{resume_info.education.2.school}}"  type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="education-2__start">
+          Start Date
+        </label>
+        <input id="education-2__start" name="education-2__start" value="{{resume_info.education.2.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="education-2__end">
+          End Date
+        </label>
+        <input id="education-2__end" name="education-2__end" value="{{resume_info.education.2.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="education-2__details">
+        Details
+      </label>
+      <textarea id="education-2__details" name="education-2__details" placeholder="{{resume_info.education.2.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Secondary Eduction
+    </h3>
+    <div class="form-group">
+      <label for="education-3__school">
+        School name
+      </label>
+      <input id="education-3__school" name="education-3__school" placeholder="{{resume_info.education.3.school}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="education-3__start">
+          Start Date
+        </label>
+        <input id="education-3__start" name="education-3__start" value="{{resume_info.education.3.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="education-3__end">
+          End Date
+        </label>
+        <input id="education-3__end" name="education-3__end" value="{{resume_info.education.3.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="education-3__details">
+        Details
+      </label>
+      <textarea id="education-3__details" name="education-3__details" placeholder="{{resume_info.education.3.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <div class="line-break">
+    </div>
+    <h2>
+      Work Experience
+    </h2>
+    <h3>
+      Most Recent Job
+    </h3>
+    <div class="form-group">
+      <label for="job-1__employer">
+        Employer Name
+      </label>
+      <input id="job-1__employer" name="job-1__employer" placeholder="{{resume_info.job.1.employer}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="job-1__position">
+        Position
+      </label>
+      <input id="job-1__position" name="job-1__position" placeholder="{{resume_info.job.1.position}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="job-1__start">
+          Start Date
+        </label>
+        <input id="job-1__start" name="job-1__start" value="{{resume_info.job.1.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="job-1__end">
+          End Date
+        </label>
+        <input id="job-1__end" name="job-1__end" value="{{resume_info.job.1.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="job-1__details">
+        Position Details
+      </label>
+      <textarea id="job-1__details" name="job-1__details" placeholder="{{resume_info.job.1.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Past Job
+    </h3>
+    <div class="form-group">
+      <label for="job-2__employer">
+        Employer Name
+      </label>
+      <input id="job-2__employer" name="job-2__employer" placeholder="{{resume_info.job.2.employer}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="job-2__position">
+        Position
+      </label>
+      <input id="job-2__position" name="job-2__position" placeholder="{{resume_info.job.2.position}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="job-2__start">
+          Start Date
+        </label>
+        <input id="job-2__start" name="job-2__start" value="{{resume_info.job.2.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="job-2__end">
+          End Date
+        </label>
+        <input id="job-2__end" name="job-2__end" value="{{resume_info.job.2.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="job-2__details">
+        Position Details
+      </label>
+      <textarea id="job-2__details" name="job-2__details" placeholder="{{resume_info.job.2.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Another Past Job
+    </h3>
+    <div class="form-group">
+      <label for="job-3__employer">
+        Employer Name
+      </label>
+      <input id="job-3__employer" name="job-3__employer" placeholder="{{resume_info.job.3.employer}}" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="job-3__position">
+        Position
+      </label>
+      <input id="job-3__position" name="job-3__position" placeholder="{{resume_info.job.3.position}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="job-3__start">
+          Start Date
+        </label>
+        <input id="job-3__start" name="job-3__start" value="{{resume_info.job.3.start}}" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="job-3__end">
+          End Date
+        </label>
+        <input id="job-3__end" name="job-3__end" value="{{resume_info.job.3.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="job-3__details">
+        Position Details
+      </label>
+      <textarea id="job-3__details" name="job-3__details" placeholder="{{resume_info.job.3.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h2>
+      Projects
+    </h2>
+    <h3>
+      Project 1
+    </h3>
+    <div class="form-group">
+      <label for="project-1__name">
+        Name
+      </label>
+      <input id="project-1__name" name="project-1__name" value="{{resume_info.project.1.name}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="project-1__end">
+          Date
+        </label>
+        <input id="project-1__end" name="project-1__end" value="{{resume_info.project.1.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="project-1__details">
+        Details
+      </label>
+      <textarea id="project-1__details" name="project-1__details" placeholder="{{resume_info.project.1.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Project 2
+    </h3>
+    <div class="form-group">
+      <label for="project-2__name">
+        Name
+      </label>
+      <input id="project-2__name" name="project-2__name" value="{{resume_info.project.2.name}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="project-2__end">
+          Date
+        </label>
+        <input id="project-2__end" name="project-2__end" value="{{resume_info.project.2.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="project-2__details">
+        Details
+      </label>
+      <textarea id="project-2__details" name="project-2__details" placeholder="{{resume_info.project.2.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <h3>
+      Project 3
+    </h3>
+    <div class="form-group">
+      <label for="project-3__name">
+        Name
+      </label>
+      <input id="project-3__name" name="project-3__name" value="{{resume_info.project.3.name}}" type="text" />
+    </div>
+    <div class="form-date-group">
+      <div class="form-group">
+        <label for="project-3__end">
+          Date
+        </label>
+        <input id="project-3__end" name="project-3__end" value="{{resume_info.project.3.end}}" type="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="project-3__details">
+        Details
+      </label>
+      <textarea id="project-3__details" name="project-3__details" placeholder="{{resume_info.project.3.details}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <div class="line-break">
+    </div>
+    <div class="form-group">
+      <label for="references">
+        References
+      </label>
+      <textarea id="references" name="references" placeholder="{{resume_info.references}}"></textarea>
+    </div>
+    <div class="line-break">
+    </div>
+    <input type="submit" value="Submit Info" />
+    <br>
+    <a class="button" href="resume"> View Resume</a>
+    <a class="button" style="background-color:red;" href="index">Back to home</a>
+  </form>
+  <!-- partial -->
+  <script src="{% static './script.js' %}">
+  </script>
+</body>
+
+</html>
