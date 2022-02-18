@@ -78,86 +78,92 @@ def create_resume(request):
             "skills":request.POST.get("skills"),
             "education": {
                 "1":{
-                    "school":request.POST.get("education-1__school"),
-                    "start":request.POST.get("education-1__start"),
-                    "end":request.POST.get("education-1__end"),
-                    "details":request.POST.get("education-1__details"),
+                    "school":request.POST.getlist("education_school")[0],
+                    "start":request.POST.getlist("education_start")[0],
+                    "end":request.POST.getlist("education_end")[0],
+                    "details":request.POST.getlist("education_details")[0],
                 },
                 "2":{
-                    "school":request.POST.get("education-2__school"),
-                    "start":request.POST.get("education-2__start"),
-                    "end":request.POST.get("education-2__end"),
-                    "details":request.POST.get("education-2__details"),
+                    "school":request.POST.getlist("education_school")[1],
+                    "start":request.POST.getlist("education_start")[1],
+                    "end":request.POST.getlist("education_end")[1],
+                    "details":request.POST.getlist("education_details")[1],
                 },
                 "3":{
-                    "school":request.POST.get("education-3__school"),
-                    "start":request.POST.get("education-3__start"),
-                    "end":request.POST.get("education-3__end"),
-                    "details":request.POST.get("education-3__details"),
+                    "school":request.POST.getlist("education_school")[2],
+                    "start":request.POST.getlist("education_start")[2],
+                    "end":request.POST.getlist("education_end")[2],
+                    "details":request.POST.getlist("education_details")[2],
                 }
             },
             "job":{
                 "1":{
-                    "employer":request.POST.get("job-1__employer"),
-                    "position":request.POST.get("job-1__position"),
-                    "start":request.POST.get("job-1__start"),
-                    "end":request.POST.get("job-1__end"),
-                    "details":request.POST.get("job-1__details"),
+                    "employer":request.POST.getlist("job_employer")[0],
+                    "position":request.POST.getlist("job_position")[0],
+                    "start":request.POST.getlist("job_start")[0],
+                    "end":request.POST.getlist("job_end")[0],
+                    "details":request.POST.getlist("job_details")[0],
                 },
                 "2":{
-                    "employer":request.POST.get("job-2__employer"),
-                    "position":request.POST.get("job-2__position"),
-                    "start":request.POST.get("job-2__start"),
-                    "end":request.POST.get("job-2__end"),
-                    "details":request.POST.get("job-2__details"),
+                    "employer":request.POST.getlist("job_employer")[1],
+                    "position":request.POST.getlist("job_position")[1],
+                    "start":request.POST.getlist("job_start")[1],
+                    "end":request.POST.getlist("job_end")[1],
+                    "details":request.POST.getlist("job_details")[1],
                 },
                 "3":{
-                    "employer":request.POST.get("job-3__employer"),
-                    "position":request.POST.get("job-3__position"),
-                    "start":request.POST.get("job-3__start"),
-                    "end":request.POST.get("job-3__end"),
-                    "details":request.POST.get("job-3__details"),
+                    "employer":request.POST.getlist("job_employer")[2],
+                    "position":request.POST.getlist("job_position")[2],
+                    "start":request.POST.getlist("job_start")[2],
+                    "end":request.POST.getlist("job_end")[2],
+                    "details":request.POST.getlist("job_details")[2],
                 }
             },
             "project":{
                 "1":{
-                    "name":request.POST.get("project-1__name"),
-                    "end":request.POST.get("project-1__end"),
-                    "details":request.POST.get("project-1__details"),
+                    "name":request.POST.getlist("project_name")[0],
+                    "end":request.POST.getlist("project_end")[0],
+                    "details":request.POST.getlist("project_details")[0],
                 },
                 "2":{
-                    "name":request.POST.get("project-2__name"),
-                    "end":request.POST.get("project-2__end"),
-                    "details":request.POST.get("project-2__details"),
+                    "name":request.POST.getlist("project_name")[1],
+                    "end":request.POST.getlist("project_end")[1],
+                    "details":request.POST.getlist("project_details")[1],
                 },
                 "3":{
-                    "name":request.POST.get("project-3__name"),
-                    "end":request.POST.get("project-3__end"),
-                    "details":request.POST.get("project-3__details"),
+                    "name":request.POST.getlist("project_name")[2],
+                    "end":request.POST.getlist("project_end")[2],
+                    "details":request.POST.getlist("project_details")[2],
                 }
             },
             "references":request.POST.get("references"),
         }
-        api_response = requests.get(f'{API_URL}/resume/{data["user"]}').json()
-        message = "Resume Info Edited Successfully. Download Resume Now"
-        if api_response["status"] == "SUCCESS":
-            message = api_response["message"]
-        elif api_response["status"] == "FAILED":
-            message = api_response["message"]
         try:
             resume = client.query(q.get(q.match(q.index("resume_index"), data["user"])))
             quiz = client.query(q.update(q.ref(q.collection("Resume_Info"),resume["ref"].id()), {
                 "data": data
             }))
-            messages.add_message(request, messages.INFO, message)
             context={"resume_info":data}
+            api_response = requests.get(f'{API_URL}/resume/{data["user"]}').json()
+            message = "Resume Info Edited Successfully. Download Resume Now"
+            if api_response["status"] == "SUCCESS":
+                message = api_response["message"]
+            elif api_response["status"] == "FAILED":
+                message = api_response["message"]
+            messages.add_message(request, messages.INFO, message)
             return render(request,"create-resume.html",context)
         except:
             quiz = client.query(q.create(q.collection("Resume_Info"), {
                 "data": data
             }))
-            messages.add_message(request, messages.INFO, message)
             context={"resume_info":data}
+            api_response = requests.get(f'{API_URL}/resume/{data["user"]}').json()
+            message = "Resume Info Edited Successfully. Download Resume Now"
+            if api_response["status"] == "SUCCESS":
+                message = api_response["message"]
+            elif api_response["status"] == "FAILED":
+                message = api_response["message"]
+            messages.add_message(request, messages.INFO, message)
             return render(request,"create-resume.html",context)
     else:
         try:

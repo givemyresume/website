@@ -41,7 +41,7 @@
     </div>
     <div class="form-group">
       <label>Summary</label>
-      <textarea id="summary" name="summary" value="{{resume_info.summary}}"></textarea>
+      <textarea id="summary" name="summary" value="{{resume_info.summary}}">{{resume_info.summary}}</textarea>
     </div>
     <div class="form-group">
       <label>Email<span>*</span></label>
@@ -63,7 +63,7 @@
     </div>
     <div class="form-group">
       <label>Skills</label>
-      <textarea id="skills" name="skills" value="{{resume_info.skills}}"></textarea>
+      <textarea id="skills" name="skills" value="{{resume_info.skills}}">{{resume_info.skills}}</textarea>
     </div>
     <h2>
       Education
@@ -73,26 +73,26 @@
     </h3>
     <div class="form-group">
       <label>College/University name</label>
-      <input id="education-1__school" name="education-1__school" value="{{resume_info.education.1.school}}"
+      <input name="education_school" value="{{resume_info.education.1.school}}"
         type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="education-1__start" name="education-1__start" value="{{resume_info.education.1.start}}"
+        <input name="education_start" value="{{resume_info.education.1.start}}"
           type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="education-1__end" name="education-1__end" value="{{resume_info.education.1.end}}" type="text" />
+        <input name="education_end" value="{{resume_info.education.1.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="education-1__details" name="education-1__details"
-        value="{{resume_info.education.1.details}}"></textarea>
+      <textarea name="education_details"
+        value="{{resume_info.education.1.details}}">{{resume_info.education.1.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -101,26 +101,26 @@
     </h3>
     <div class="form-group">
       <label>High School name</label>
-      <input id="education-2__school" name="education-2__school" value="{{resume_info.education.2.school}}"
+      <input name="education_school" value="{{resume_info.education.2.school}}"
         type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="education-2__start" name="education-2__start" value="{{resume_info.education.2.start}}"
+        <input name="education_start" value="{{resume_info.education.2.start}}"
           type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="education-2__end" name="education-2__end" value="{{resume_info.education.2.end}}" type="text" />
+        <input name="education_end" value="{{resume_info.education.2.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="education-2__details" name="education-2__details"
-        value="{{resume_info.education.2.details}}"></textarea>
+      <textarea name="education_details"
+        value="{{resume_info.education.2.details}}">{{resume_info.education.2.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -129,26 +129,26 @@
     </h3>
     <div class="form-group">
       <label>School name</label>
-      <input id="education-3__school" name="education-3__school" value="{{resume_info.education.3.school}}"
+      <input name="education_school" value="{{resume_info.education.3.school}}"
         type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="education-3__start" name="education-3__start" value="{{resume_info.education.3.start}}"
+        <input name="education_start" value="{{resume_info.education.3.start}}"
           type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="education-3__end" name="education-3__end" value="{{resume_info.education.3.end}}" type="text" />
+        <input name="education_end" value="{{resume_info.education.3.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="education-3__details" name="education-3__details"
-        value="{{resume_info.education.3.details}}"></textarea>
+      <textarea name="education_details"
+        value="{{resume_info.education.3.details}}">{{resume_info.education.3.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -162,27 +162,27 @@
     </h3>
     <div class="form-group">
       <label>Employer Name</label>
-      <input id="job-1__employer" name="job-1__employer" value="{{resume_info.job.1.employer}}" type="text" />
+      <input name="job_employer" value="{{resume_info.job.1.employer}}" type="text" />
     </div>
     <div class="form-group">
       <label>Position</label>
-      <input id="job-1__position" name="job-1__position" value="{{resume_info.job.1.position}}" type="text" />
+      <input name="job_position" value="{{resume_info.job.1.position}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="job-1__start" name="job-1__start" value="{{resume_info.job.1.start}}" type="text" />
+        <input name="job_start" value="{{resume_info.job.1.start}}" type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="job-1__end" name="job-1__end" value="{{resume_info.job.1.end}}" type="text" />
+        <input name="job_end" value="{{resume_info.job.1.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Position Details</label>
-      <textarea id="job-1__details" name="job-1__details" value="{{resume_info.job.1.details}}"></textarea>
+      <textarea name="job_details" value="{{resume_info.job.1.details}}">{{resume_info.job.1.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -191,27 +191,27 @@
     </h3>
     <div class="form-group">
       <label>Employer Name</label>
-      <input id="job-2__employer" name="job-2__employer" value="{{resume_info.job.2.employer}}" type="text" />
+      <input name="job_employer" value="{{resume_info.job.2.employer}}" type="text" />
     </div>
     <div class="form-group">
       <label>Position</label>
-      <input id="job-2__position" name="job-2__position" value="{{resume_info.job.2.position}}" type="text" />
+      <input name="job_position" value="{{resume_info.job.2.position}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="job-2__start" name="job-2__start" value="{{resume_info.job.2.start}}" type="text" />
+        <input name="job_start" value="{{resume_info.job.2.start}}" type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="job-2__end" name="job-2__end" value="{{resume_info.job.2.end}}" type="text" />
+        <input name="job_end" value="{{resume_info.job.2.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Position Details</label>
-      <textarea id="job-2__details" name="job-2__details" value="{{resume_info.job.2.details}}"></textarea>
+      <textarea name="job_details" value="{{resume_info.job.2.details}}">{{resume_info.job.2.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -220,27 +220,27 @@
     </h3>
     <div class="form-group">
       <label>Employer Name</label>
-      <input id="job-3__employer" name="job-3__employer" value="{{resume_info.job.3.employer}}" type="text" />
+      <input name="job_employer" value="{{resume_info.job.3.employer}}" type="text" />
     </div>
     <div class="form-group">
       <label>Position</label>
-      <input id="job-3__position" name="job-3__position" value="{{resume_info.job.3.position}}" type="text" />
+      <input name="job_position" value="{{resume_info.job.3.position}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Start Date
         </label>
-        <input id="job-3__start" name="job-3__start" value="{{resume_info.job.3.start}}" type="text" />
+        <input name="job_start" value="{{resume_info.job.3.start}}" type="text" />
       </div>
       <div class="form-group">
         <label> End Date
         </label>
-        <input id="job-3__end" name="job-3__end" value="{{resume_info.job.3.end}}" type="text" />
+        <input name="job_end" value="{{resume_info.job.3.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Position Details</label>
-      <textarea id="job-3__details" name="job-3__details" value="{{resume_info.job.3.details}}"></textarea>
+      <textarea name="job_details" value="{{resume_info.job.3.details}}">{{resume_info.job.3.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -252,18 +252,18 @@
     </h3>
     <div class="form-group">
       <label>Name</label>
-      <input id="project-1__name" name="project-1__name" value="{{resume_info.project.1.name}}" type="text" />
+      <input name="project_name" value="{{resume_info.project.1.name}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Date
         </label>
-        <input id="project-1__end" name="project-1__end" value="{{resume_info.project.1.end}}" type="text" />
+        <input name="project_end" value="{{resume_info.project.1.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="project-1__details" name="project-1__details" value="{{resume_info.project.1.details}}"></textarea>
+      <textarea name="project_details" value="{{resume_info.project.1.details}}">{{resume_info.project.1.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -272,18 +272,18 @@
     </h3>
     <div class="form-group">
       <label>Name</label>
-      <input id="project-2__name" name="project-2__name" value="{{resume_info.project.2.name}}" type="text" />
+      <input name="project_name" value="{{resume_info.project.2.name}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Date
         </label>
-        <input id="project-2__end" name="project-2__end" value="{{resume_info.project.2.end}}" type="text" />
+        <input name="project_end" value="{{resume_info.project.2.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="project-2__details" name="project-2__details" value="{{resume_info.project.2.details}}"></textarea>
+      <textarea name="project_details" value="{{resume_info.project.2.details}}">{{resume_info.project.2.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -292,18 +292,18 @@
     </h3>
     <div class="form-group">
       <label>Name</label>
-      <input id="project-3__name" name="project-3__name" value="{{resume_info.project.3.name}}" type="text" />
+      <input name="project_name" value="{{resume_info.project.3.name}}" type="text" />
     </div>
     <div class="form-date-group">
       <div class="form-group">
         <label> Date
         </label>
-        <input id="project-3__end" name="project-3__end" value="{{resume_info.project.3.end}}" type="text" />
+        <input name="project_end" value="{{resume_info.project.3.end}}" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label>Details</label>
-      <textarea id="project-3__details" name="project-3__details" value="{{resume_info.project.3.details}}"></textarea>
+      <textarea name="project_details" value="{{resume_info.project.3.details}}">{{resume_info.project.3.details}}</textarea>
     </div>
     <div class="line-break">
     </div>
@@ -311,7 +311,7 @@
     </div>
     <div class="form-group">
       <label>References</label>
-      <textarea id="references" name="references" value="{{resume_info.references}}"></textarea>
+      <textarea name="references" value="{{resume_info.references}}"></textarea>
     </div>
     <div class="line-break">
     </div>
