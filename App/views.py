@@ -8,10 +8,14 @@ import pytz
 import hashlib
 import datetime
 import requests
+import os
 
 
-API_URL = "http://0.0.0.0:8001"
-client = FaunaClient(secret="fnAEffAgzSACTABvMpg2lOwlPquGo_oNvuN1XHbA")
+API_URL = os.getenv("API_URL")
+FAUNA_DB_KEY = os.getenv("FAUNA_DB_KEY")
+
+
+client = FaunaClient(secret=FAUNA_DB_KEY)
 indexes = client.query(q.paginate(q.indexes()))
 
 # Create your views here.
@@ -174,10 +178,4 @@ def create_resume(request):
             return render(request,"create-resume.html")
 
 def resume(request):
-    try:
-        data = client.query(q.get(q.match(q.index("resume_index"), request.session["user"]["username"])))["data"]
-        context={"resume_info":data}
-        print(context)
-        return render(request,"resume.html",context)
-    except:
-        return render(request,"resume.html")
+    return redirect(f"https://givemyresume.github.io/{request.session['user']['username']}")
