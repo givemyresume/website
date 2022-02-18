@@ -66,7 +66,7 @@ def login(request):
 
 def create_resume(request):
     if request.method=="POST":
-        print(request.POST)
+        # print(request.POST)
         data = {
             "user":request.session["user"]["username"],
             "full_name":request.POST.get("name"),
