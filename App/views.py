@@ -143,8 +143,7 @@ def create_resume(request):
             "references":request.POST.get("references"),
         }
         try:
-            resume = client.query(q.get(q.match(q.index("resume_index"), data["user"])))
-            quiz = client.query(q.update(q.ref(q.collection("Resume_Info"),resume["ref"].id()), {
+            quiz = client.query(q.create(q.collection("Resume_Info"), {
                 "data": data
             }))
             context={"resume_info":data}
@@ -157,7 +156,8 @@ def create_resume(request):
             messages.add_message(request, messages.INFO, message)
             return render(request,"create-resume.html",context)
         except:
-            quiz = client.query(q.create(q.collection("Resume_Info"), {
+            resume = client.query(q.get(q.match(q.index("resume_index"), data["user"])))
+            quiz = client.query(q.update(q.ref(q.collection("Resume_Info"),resume["ref"].id()), {
                 "data": data
             }))
             context={"resume_info":data}
