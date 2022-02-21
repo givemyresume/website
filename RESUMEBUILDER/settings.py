@@ -27,9 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://app.givemyresume.tech', 'app.givemyresume.tech', 'https://givemyresume.tech', 'givemyresume.tech']
+# CSRF_TRUSTED_ORIGINS = ['https://app.givemyresume.tech', 'app.givemyresume.tech', 'https://givemyresume.tech', 'givemyresume.tech']
 
-CSRF_COOKIE_DOMAIN = 'givemyresume.tech'
+# CSRF_COOKIE_DOMAIN = 'givemyresume.tech'
 
 
 # Application definition
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

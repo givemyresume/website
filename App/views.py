@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
 from faunadb import query as q
 from faunadb.objects import Ref
 from faunadb.client import FaunaClient
@@ -23,6 +24,7 @@ def index(request):
     return render(request,"index.html")
 
 
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         username = request.POST.get("username").strip().lower()
@@ -47,6 +49,7 @@ def register(request):
     return render(request,"register.html")
 
 
+@csrf_exempt
 def login(request):
     if request.method == "POST":
         username = request.POST.get("username").strip().lower()
@@ -68,6 +71,7 @@ def login(request):
     return render(request,"login.html")
 
 
+@csrf_exempt
 def create_resume(request):
     if request.method=="POST":
         # print(request.POST)
