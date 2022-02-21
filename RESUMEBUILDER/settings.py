@@ -27,16 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-
-CSRF_TRUSTED_ORIGINS = ['https://app.givemyresume.tech/']
-
-CORS_REPLACE_HTTPS_REFERER = True
+CSRF_TRUSTED_ORIGINS = ['https://app.givemyresume.tech', 'app.givemyresume.tech', 'https://givemyresume.tech', 'givemyresume.tech']
 
 CSRF_COOKIE_DOMAIN = 'givemyresume.tech'
 
