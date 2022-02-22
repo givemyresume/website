@@ -182,4 +182,4 @@ def create_resume(request):
             return render(request,"create-resume.html")
 
 def resume(request):
-    return redirect(f"https://givemyresume.github.io/{request.session['user']['username']}")
+    return redirect(f"https://givemyresume.tech/{request.session['user']['username']}")
