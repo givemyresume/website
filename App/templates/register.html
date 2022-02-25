@@ -12,9 +12,6 @@
     input:invalid {
       border: red solid;
     }
-    input:valid {
-      border: aquamarine;
-    }
   </style>
  </head>
  <body>
@@ -50,7 +47,7 @@
       *
      </span>
     </label>
-    <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+    <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" title="please enter a valid email address"/>
     <div class="error" id="name__error">
     </div>
    </div>
