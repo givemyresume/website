@@ -57,6 +57,7 @@
      </span>
     </label>
     <input id="password" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="checkbox" onclick="{var x = document.getElementById('password');if (x.type === 'password') {x.type = 'text';} else {x.type = 'password';}}">Show Password
    </div>
    <div class="line-break">
    </div>
