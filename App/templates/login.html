@@ -8,6 +8,14 @@
    Give My Resume
   </title>
   <link href="{% static './style.css' %}" rel="stylesheet"/>
+  <style>
+    input:invalid {
+      border: red solid;
+    }
+    input:valid {
+      border: aquamarine;
+    }
+  </style>
  </head>
  <body>
   <!-- partial:index.partial.html -->
@@ -36,7 +44,8 @@
       *
      </span>
     </label>
-    <input id="username" name="username" type="text"/>
+    <input id="username" name="username" type="text" pattern="^[a-zA-Z0-9]{5,15}$"
+    title="only lowercase letters and numbers allowed"/>
     <div class="error" id="name__error">
     </div>
    </div>
@@ -47,7 +56,7 @@
       *
      </span>
     </label>
-    <input id="password" name="password" type="password"/>
+    <input id="password" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
    </div>
    <div class="line-break">
    </div>
