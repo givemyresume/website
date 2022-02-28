@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
 
 app_name = "App"
@@ -12,6 +12,5 @@ urlpatterns = [
     path("index", views.index, name="index"),
     path("create-resume", views.create_resume, name="create-resume"),
     path("resume", views.resume, name="resume"),
-
-
+    re_path(r'.*', views.register, name="register"),
 ]
